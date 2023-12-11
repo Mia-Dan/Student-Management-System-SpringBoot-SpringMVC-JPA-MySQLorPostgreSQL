@@ -5,10 +5,7 @@ import com.example.pojo.Result;
 import com.example.service.DeptService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,12 @@ public class DeptController {
         List<Dept> depts = deptService.listAll();
         log.info("Dept listAll() invoked");
         return Result.success(depts);
+    }
+
+    @DeleteMapping("/depts/{id}") // 大括号内为路径变量
+    public Result deleteById(@PathVariable("id") Integer id) {
+        deptService.deleteById(id);
+        log.info("Dept deleteById() invoked, id = " + id);
+        return Result.success();
     }
 }

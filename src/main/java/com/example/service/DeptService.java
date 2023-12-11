@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface DeptService {
     List<Dept> listAll();
+
+    void deleteById(Integer id);
 }
