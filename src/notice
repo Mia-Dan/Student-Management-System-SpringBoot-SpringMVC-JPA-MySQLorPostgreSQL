@@ -1,0 +1,35 @@
+Postman 测 PUT 没实现
+但是在浏览器中测试修改(对应PUT),却有反应:
+    选中的数据 前端回显失败,
+    选中的数据 没有被改动,
+    但是有数据新增, 是根据修改值增加的
+
+后台日志如下:
+
+2023-12-11 15:49:06.051  WARN 25028 --- [nio-8080-exec-9] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2715f565] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@701636599 wrapping com.mysql.cj.jdbc.ConnectionImpl@569adaf0] will not be managed by Spring
+==>  Preparing: insert into dept values(null, ?, ?, ?)
+==> Parameters: 222(String), 2023-12-11T15:49:07.860(LocalDateTime), 2023-12-11T15:49:07.860(LocalDateTime)
+<==    Updates: 1
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@2715f565]
+2023-12-11 15:49:07.864  INFO 25028 --- [nio-8080-exec-4] com.example.controller.DeptController    : Dept add() invoked, dept = Dept(id=null, name=222, createTime=2023-12-11T15:49:07.860, updateTime=2023-12-11T15:49:07.860)
+Creating a new SqlSession
+SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@a226e66] was not registered for synchronization because synchronization is not active
+JDBC Connection [HikariProxyConnection@187178261 wrapping com.mysql.cj.jdbc.ConnectionImpl@569adaf0] will not be managed by Spring
+==>  Preparing: select * from dept
+==> Parameters:
+<==    Columns: id, name, create_time, update_time
+<==        Row: 1, 学工部, 2023-12-11 11:13:31, 2023-12-11 11:13:31
+<==        Row: 2, 教研部, 2023-12-11 11:13:31, 2023-12-11 11:13:31
+<==        Row: 3, 咨询部, 2023-12-11 11:13:31, 2023-12-11 11:13:31
+<==        Row: 4, 就业部, 2023-12-11 11:13:31, 2023-12-11 11:13:31
+<==        Row: 8, 12313, 2023-12-11 15:45:01, 2023-12-11 15:45:01
+<==        Row: 9, sada, 2023-12-11 15:45:33, 2023-12-11 15:45:33
+<==        Row: 10, sdadadad, 2023-12-11 15:46:04, 2023-12-11 15:46:04
+<==        Row: 11, 111, 2023-12-11 15:47:02, 2023-12-11 15:47:02
+<==        Row: 12, 222, 2023-12-11 15:49:08, 2023-12-11 15:49:08
+<==      Total: 9
+Closing non transactional SqlSession [org.apache.ibatis.session.defaults.DefaultSqlSession@a226e66]
+2023-12-11 15:49:07.875  INFO 25028 --- [nio-8080-exec-8] com.example.controller.DeptController    : Dept listAll() invoked

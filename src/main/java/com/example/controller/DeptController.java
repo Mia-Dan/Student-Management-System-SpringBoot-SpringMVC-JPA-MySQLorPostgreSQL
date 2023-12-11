@@ -25,9 +25,16 @@ public class DeptController {
     }
 
     @DeleteMapping("/depts/{id}") // 大括号内为路径变量
-    public Result deleteById(@PathVariable("id") Integer id) {
+    public Result deleteById(@PathVariable("id") Integer id) { //路径变量用@PathVariable注解
         deptService.deleteById(id);
         log.info("Dept deleteById() invoked, id = " + id);
+        return Result.success();
+    }
+
+    @PostMapping("/depts")
+    public Result add(@RequestBody Dept dept) { //请求体用@RequestBody注解, 这里用实体类Dept接收json数据(请求体)
+        deptService.add(dept);
+        log.info("Dept add() invoked, dept = " + dept);
         return Result.success();
     }
 }
