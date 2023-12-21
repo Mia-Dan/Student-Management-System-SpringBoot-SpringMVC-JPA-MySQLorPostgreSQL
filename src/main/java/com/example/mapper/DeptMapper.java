@@ -19,4 +19,12 @@ public interface DeptMapper {
 
     @Insert("insert into dept values(null, #{name}, #{createTime}, #{updateTime})") // #{} 里面写[对象的属性名]
     void insert(Dept dept);
+
+    @Select("select * from dept where id = #{id}")
+    Dept getById(Integer id);
+
+    @Insert("update dept set name = #{name}, update_time = #{updateTime} where id = #{id}")
+    void updateById(Dept dept);
+
+
 }
