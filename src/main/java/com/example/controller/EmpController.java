@@ -1,15 +1,14 @@
 package com.example.controller;
 
 
+import com.example.pojo.Emp;
 import com.example.pojo.EmpPageBean;
 import com.example.pojo.Result;
 import com.example.service.EmpService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 
@@ -37,5 +36,11 @@ public class EmpController {
         return Result.success(empPageBean);
     }
 
+    @PostMapping("/emps")
+    public Result save(@RequestBody Emp emp){
+        empService.save(emp);
+        log.info("Emp save() invoked, emp = " + emp);
+        return Result.success();
+    }
 
 }

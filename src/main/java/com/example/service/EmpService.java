@@ -11,4 +11,5 @@ public interface EmpService {
     EmpPageBean page(Integer page, Integer pageSize,
                      String name, Short gender, LocalDate begin, LocalDate end);
 
+    void save(Emp emp);
 }
