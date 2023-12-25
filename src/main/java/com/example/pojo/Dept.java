@@ -3,6 +3,8 @@ package com.example.pojo;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
@@ -11,10 +13,21 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
+@Table(name = "dept")
 public class Dept {
+    // auto increment
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id; //ID
+
+    @Column(name = "name")
     private String name; //部门名称
+
+    @Column(name = "create_time")
     private LocalDateTime createTime; //创建时间
+
+    @Column(name = "update_time")
     private LocalDateTime updateTime; //修改时间
 }
 
