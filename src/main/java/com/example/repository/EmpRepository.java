@@ -13,7 +13,7 @@ import java.util.List;
 
 public interface EmpRepository extends PagingAndSortingRepository<Emp, Integer>, JpaSpecificationExecutor<Emp> {
 
-    @Query("select e from Emp e where (e.name like %:name% or :name is null) " +
+    @Query("select e from Emp e where (:name is null or e.name like %:name%) " +
             "and (e.gender = :gender or :gender is null) " +
             "and ((e.entrydate between :begin and :end) or :begin is null or :end is null)")
     List<Emp> queryByLots(Pageable pageable,
