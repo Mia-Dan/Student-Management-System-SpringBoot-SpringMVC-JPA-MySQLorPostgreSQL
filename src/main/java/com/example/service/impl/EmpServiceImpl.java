@@ -18,8 +18,10 @@ import java.util.List;
 @Service
 public class EmpServiceImpl implements EmpService {
 
-    @Autowired
-    private EmpMapper empMapper;
+
+    // MyBatis -------------------------------------------------------
+//    @Autowired
+//    private EmpMapper empMapper;
 
 ////    @Override
 ////    public EmpPageBean page(Integer page, Integer pageSize) {
@@ -41,20 +43,21 @@ public class EmpServiceImpl implements EmpService {
 //        return new EmpPageBean(p.getTotal(), p.getResult());
 //    }
 //
-    @Override
-    public void save(Emp emp) {
-        emp.setCreateTime(LocalDateTime.now());
-        emp.setUpdateTime(LocalDateTime.now());
-        empMapper.save(emp);
-    }
+//    @Override
+//    public void save(Emp emp) {
+//        emp.setCreateTime(LocalDateTime.now());
+//        emp.setUpdateTime(LocalDateTime.now());
+//        empMapper.save(emp);
+//    }
 
+    // JPA -------------------------------------------------------
     @Autowired
     private EmpRepository empRepository;
 
 //    @Override
 //    public EmpPageBean page(Integer page, Integer pageSize
 ////                            String name, Short gender, LocalDate begin, LocalDate end
-//                            ) {
+//                            ) { // Pagination
 //        Pageable pageable = org.springframework.data.domain.PageRequest.of(page - 1, pageSize);
 //        List<Emp> rows = empRepository.findAll(pageable).getContent();
 //        Long total = empRepository.count();
@@ -75,5 +78,12 @@ public class EmpServiceImpl implements EmpService {
 //        Long total = empRepository.count();
 
         return new EmpPageBean(total, rows);
+    }
+
+    @Override
+    public void save(Emp emp) {
+        emp.setCreateTime(LocalDateTime.now());
+        emp.setUpdateTime(LocalDateTime.now());
+        empRepository.save(emp);
     }
 }
