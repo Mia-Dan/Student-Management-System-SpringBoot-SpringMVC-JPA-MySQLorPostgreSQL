@@ -8,8 +8,10 @@ import java.util.List;
 
 public interface EmpService {
 
-    EmpPageBean page(Integer page, Integer pageSize,
-                     String name, Short gender, LocalDate begin, LocalDate end);
+//    EmpPageBean page(Integer page, Integer pageSize,
+//                     String name, Short gender, LocalDate begin, LocalDate end);
+    EmpPageBean page(Integer page, Integer pageSize);
+
 
     void save(Emp emp);
 }
