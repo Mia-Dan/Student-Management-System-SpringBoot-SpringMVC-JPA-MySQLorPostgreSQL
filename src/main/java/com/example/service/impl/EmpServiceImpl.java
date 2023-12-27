@@ -71,8 +71,8 @@ public class EmpServiceImpl implements EmpService {
 
         List<Emp> rows = empRepository.queryByLots(pageable, name, gender, begin, end);
 
-
-        Long total = empRepository.count();
+        Long total = (long) rows.size();
+//        Long total = empRepository.count();
 
         return new EmpPageBean(total, rows);
     }
