@@ -1,6 +1,6 @@
 HOW THINGS GONE WRONG:
 
-GET: http://localhost:8080/emps
+http://localhost:8080/emps?name=张&gender=1&begin=2007-09-01&end=2022-10-01&page=1&pageSize=10
 
 {
     "code": 1,
@@ -12,24 +12,8 @@ GET: http://localhost:8080/emps
 }
 
 
-
-
-GET: http://localhost:8080/emps?name=张&gender=1&begin=2007-09-01&end=2022-109-01&page=1&pageSize=10
-
-{
-    "timestamp": "2023-12-27T07:54:56.280+00:00",
-    "status": 400,
-    "error": "Bad Request",
-    "path": "/emps"
-}
-
-
-
----
-
-WHERE THINGS GONE RIGHT
-
-GET: http://localhost:8080/emps?name=张&gender=1&begin=2007-09-01&end=2022-10-01&page=1&pageSize=10
+WHERE THINGS GONE RIGHT:
+http://localhost:8080/emps?gender=1&begin=2007-09-01&end=2022-10-01&page=1&pageSize=10
 
 {
     "code": 1,
@@ -47,6 +31,371 @@ GET: http://localhost:8080/emps?name=张&gender=1&begin=2007-09-01&end=2022-10-0
                 "job": 2,
                 "entrydate": "2015-01-01",
                 "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 3,
+                "username": "yangxiao",
+                "password": "123456",
+                "name": "杨逍",
+                "gender": 1,
+                "image": "3.jpg",
+                "job": 2,
+                "entrydate": "2008-05-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 5,
+                "username": "changyuchun",
+                "password": "123456",
+                "name": "常遇春",
+                "gender": 1,
+                "image": "5.jpg",
+                "job": 2,
+                "entrydate": "2012-12-05",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 12,
+                "username": "hebiweng",
+                "password": "123456",
+                "name": "鹤笔翁",
+                "gender": 1,
+                "image": "12.jpg",
+                "job": 5,
+                "entrydate": "2008-08-18",
+                "deptId": 3,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 13,
+                "username": "fangdongbai",
+                "password": "123456",
+                "name": "方东白",
+                "gender": 1,
+                "image": "13.jpg",
+                "job": 5,
+                "entrydate": "2012-11-01",
+                "deptId": 3,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 15,
+                "username": "yulianzhou",
+                "password": "123456",
+                "name": "俞莲舟",
+                "gender": 1,
+                "image": "15.jpg",
+                "job": 2,
+                "entrydate": "2011-05-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 17,
+                "username": "chenyouliang",
+                "password": "123456",
+                "name": "陈友谅",
+                "gender": 1,
+                "image": "17.jpg",
+                "job": null,
+                "entrydate": "2015-03-21",
+                "deptId": null,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            }
+        ]
+    }
+}
+
+
+http://localhost:8080/emps?gender=1
+
+
+{
+    "code": 1,
+    "msg": "success",
+    "data": {
+        "total": 17,
+        "rows": [
+            {
+                "id": 1,
+                "username": "jinyong",
+                "password": "123456",
+                "name": "金庸",
+                "gender": 1,
+                "image": "1.jpg",
+                "job": 4,
+                "entrydate": "2000-01-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 2,
+                "username": "zhangwuji",
+                "password": "123456",
+                "name": "张无忌",
+                "gender": 1,
+                "image": "2.jpg",
+                "job": 2,
+                "entrydate": "2015-01-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 3,
+                "username": "yangxiao",
+                "password": "123456",
+                "name": "杨逍",
+                "gender": 1,
+                "image": "3.jpg",
+                "job": 2,
+                "entrydate": "2008-05-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 4,
+                "username": "weiyixiao",
+                "password": "123456",
+                "name": "韦一笑",
+                "gender": 1,
+                "image": "4.jpg",
+                "job": 2,
+                "entrydate": "2007-01-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 5,
+                "username": "changyuchun",
+                "password": "123456",
+                "name": "常遇春",
+                "gender": 1,
+                "image": "5.jpg",
+                "job": 2,
+                "entrydate": "2012-12-05",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 11,
+                "username": "luzhangke",
+                "password": "123456",
+                "name": "鹿杖客",
+                "gender": 1,
+                "image": "11.jpg",
+                "job": 5,
+                "entrydate": "2007-02-01",
+                "deptId": 3,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 12,
+                "username": "hebiweng",
+                "password": "123456",
+                "name": "鹤笔翁",
+                "gender": 1,
+                "image": "12.jpg",
+                "job": 5,
+                "entrydate": "2008-08-18",
+                "deptId": 3,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 13,
+                "username": "fangdongbai",
+                "password": "123456",
+                "name": "方东白",
+                "gender": 1,
+                "image": "13.jpg",
+                "job": 5,
+                "entrydate": "2012-11-01",
+                "deptId": 3,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 14,
+                "username": "zhangsanfeng",
+                "password": "123456",
+                "name": "张三丰",
+                "gender": 1,
+                "image": "14.jpg",
+                "job": 2,
+                "entrydate": "2002-08-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 15,
+                "username": "yulianzhou",
+                "password": "123456",
+                "name": "俞莲舟",
+                "gender": 1,
+                "image": "15.jpg",
+                "job": 2,
+                "entrydate": "2011-05-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            }
+        ]
+    }
+}
+
+
+http://localhost:8080/emps
+
+{
+    "code": 1,
+    "msg": "success",
+    "data": {
+        "total": 17,
+        "rows": [
+            {
+                "id": 1,
+                "username": "jinyong",
+                "password": "123456",
+                "name": "金庸",
+                "gender": 1,
+                "image": "1.jpg",
+                "job": 4,
+                "entrydate": "2000-01-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 2,
+                "username": "zhangwuji",
+                "password": "123456",
+                "name": "张无忌",
+                "gender": 1,
+                "image": "2.jpg",
+                "job": 2,
+                "entrydate": "2015-01-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 3,
+                "username": "yangxiao",
+                "password": "123456",
+                "name": "杨逍",
+                "gender": 1,
+                "image": "3.jpg",
+                "job": 2,
+                "entrydate": "2008-05-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 4,
+                "username": "weiyixiao",
+                "password": "123456",
+                "name": "韦一笑",
+                "gender": 1,
+                "image": "4.jpg",
+                "job": 2,
+                "entrydate": "2007-01-01",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 5,
+                "username": "changyuchun",
+                "password": "123456",
+                "name": "常遇春",
+                "gender": 1,
+                "image": "5.jpg",
+                "job": 2,
+                "entrydate": "2012-12-05",
+                "deptId": 2,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 6,
+                "username": "xiaozhao",
+                "password": "123456",
+                "name": "小昭",
+                "gender": 2,
+                "image": "6.jpg",
+                "job": 3,
+                "entrydate": "2013-09-05",
+                "deptId": 1,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 7,
+                "username": "jixiaofu",
+                "password": "123456",
+                "name": "纪晓芙",
+                "gender": 2,
+                "image": "7.jpg",
+                "job": 1,
+                "entrydate": "2005-08-01",
+                "deptId": 1,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 8,
+                "username": "zhouzhiruo",
+                "password": "123456",
+                "name": "周芷若",
+                "gender": 2,
+                "image": "8.jpg",
+                "job": 1,
+                "entrydate": "2014-11-09",
+                "deptId": 1,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 9,
+                "username": "dingminjun",
+                "password": "123456",
+                "name": "丁敏君",
+                "gender": 2,
+                "image": "9.jpg",
+                "job": 1,
+                "entrydate": "2011-03-11",
+                "deptId": 1,
+                "createTime": "2023-12-27T13:35:37",
+                "updateTime": "2023-12-27T13:35:37"
+            },
+            {
+                "id": 10,
+                "username": "zhaomin",
+                "password": "123456",
+                "name": "赵敏",
+                "gender": 2,
+                "image": "10.jpg",
+                "job": 1,
+                "entrydate": "2013-09-05",
+                "deptId": 1,
                 "createTime": "2023-12-27T13:35:37",
                 "updateTime": "2023-12-27T13:35:37"
             }
