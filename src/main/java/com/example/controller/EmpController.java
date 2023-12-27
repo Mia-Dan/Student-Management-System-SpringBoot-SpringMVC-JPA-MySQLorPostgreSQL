@@ -31,8 +31,8 @@ public class EmpController {
                            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate begin,
                            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end
                            ){
-//        EmpPageBean empPageBean = empService.page(page, pageSize, name, gender, begin, end);
-        EmpPageBean empPageBean = empService.page(page, pageSize);
+        EmpPageBean empPageBean = empService.page(page, pageSize, name, gender, begin, end);
+//        EmpPageBean empPageBean = empService.page(page, pageSize);
         log.info("Emp listPage() invoked, page = " + page + ", pageSize = " + pageSize + ", name = " + name + ", gender = " + gender + ", begin = " + begin + ", end = " + end);
         return Result.success(empPageBean);
     }

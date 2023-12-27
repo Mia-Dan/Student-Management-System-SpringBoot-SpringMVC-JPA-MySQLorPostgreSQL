@@ -51,12 +51,27 @@ public class EmpServiceImpl implements EmpService {
     @Autowired
     private EmpRepository empRepository;
 
+//    @Override
+//    public EmpPageBean page(Integer page, Integer pageSize
+////                            String name, Short gender, LocalDate begin, LocalDate end
+//                            ) {
+//        Pageable pageable = org.springframework.data.domain.PageRequest.of(page - 1, pageSize);
+//        List<Emp> rows = empRepository.findAll(pageable).getContent();
+//        Long total = empRepository.count();
+//
+//        return new EmpPageBean(total, rows);
+//    }
+
     @Override
     public EmpPageBean page(Integer page, Integer pageSize
-//                            String name, Short gender, LocalDate begin, LocalDate end
-                            ) {
+                            , String name, Short gender, LocalDate begin, LocalDate end
+    ) {
         Pageable pageable = org.springframework.data.domain.PageRequest.of(page - 1, pageSize);
-        List<Emp> rows = empRepository.findAll(pageable).getContent();
+//        List<Emp> rows = empRepository.findAll(pageable).getContent();
+
+        List<Emp> rows = empRepository.queryByLots(pageable, name, gender, begin, end);
+
+
         Long total = empRepository.count();
 
         return new EmpPageBean(total, rows);
