@@ -1,0 +1,72 @@
+pojo/Emp.java
+
+    @Column(name = "gender", nullable = false, columnDefinition = "tinyint unsigned")
+    @Comment("性别, 说明: 1 男, 2 女")
+    private Short gender; //性别 , 1 男, 2 女
+
+causes error:
+...
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "unsigned"
+
+
+analysis:
+
+PostgreSQL does not support the `unsigned` keyword in its column definitions
+
+solution:
+//  @Column(name = "gender", nullable = false, columnDefinition = "tinyint unsigned")
+   @Column(name = "gender", nullable = false)
+
+
+--- full logs
+
+2024-01-03 18:43:54.033  WARN 26692 --- [           main] o.h.t.s.i.ExceptionHandlerLoggedImpl     : GenerationTarget encountered exception accepting command : Error executing DDL "
+    create table emp (
+       id  serial not null,
+        create_time timestamp,
+        dept_id int4,
+        entrydate date,
+        gender tinyint unsigned not null,
+        image varchar(255),
+        job int2,
+        name varchar(10) not null,
+        password varchar(32) default 123456,
+        update_time timestamp,
+        username varchar(20) not null,
+        primary key (id)
+    )" via JDBC Statement
+
+org.hibernate.tool.schema.spi.CommandAcceptanceException: Error executing DDL "
+    create table emp (
+       id  serial not null,
+        create_time timestamp,
+        dept_id int4,
+        entrydate date,
+        gender tinyint unsigned not null,
+        image varchar(255),
+        job int2,
+        name varchar(10) not null,
+        password varchar(32) default 123456,
+        update_time timestamp,
+        username varchar(20) not null,
+        primary key (id)
+    )" via JDBC Statement
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:67) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+...
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.6.jar:2.7.6]
+	at com.example.SmsApplication.main(SmsApplication.java:10) ~[classes/:na]
+Caused by: org.postgresql.util.PSQLException: ERROR: syntax error at or near "unsigned"
+  Position: 159
+	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675) ~[postgresql-42.3.8.jar:42.3.8]
+	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365) ~[postgresql-42.3.8.jar:42.3.8]
+	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355) ~[postgresql-42.3.8.jar:42.3.8]
+	at org.postgresql.jdbc.PgStatement.executeInternal(PgStatement.java:490) ~[postgresql-42.3.8.jar:42.3.8]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:408) ~[postgresql-42.3.8.jar:42.3.8]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:329) ~[postgresql-42.3.8.jar:42.3.8]
+	at org.postgresql.jdbc.PgStatement.executeCachedSql(PgStatement.java:315) ~[postgresql-42.3.8.jar:42.3.8]
+	at org.postgresql.jdbc.PgStatement.executeWithFlags(PgStatement.java:291) ~[postgresql-42.3.8.jar:42.3.8]
+	at org.postgresql.jdbc.PgStatement.execute(PgStatement.java:286) ~[postgresql-42.3.8.jar:42.3.8]
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94) ~[HikariCP-4.0.3.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java) ~[HikariCP-4.0.3.jar:na]
+	at org.hibernate.tool.schema.internal.exec.GenerationTargetToDatabase.accept(GenerationTargetToDatabase.java:54) ~[hibernate-core-5.6.14.Final.jar:5.6.14.Final]
+	... 34 common frames omitted

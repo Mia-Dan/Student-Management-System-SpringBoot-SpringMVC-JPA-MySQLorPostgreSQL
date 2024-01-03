@@ -43,7 +43,8 @@ public class Emp {
     @Column(name = "name", nullable = false, length = 10)
     private String name; //姓名
 
-    @Column(name = "gender", nullable = false, columnDefinition = "tinyint unsigned")
+//    @Column(name = "gender", nullable = false, columnDefinition = "tinyint unsigned") // MySQl supports unsigned, but PostgreSQL not
+    @Column(name = "gender", nullable = false)
     @Comment("性别, 说明: 1 男, 2 女")
     private Short gender; //性别 , 1 男, 2 女
 
