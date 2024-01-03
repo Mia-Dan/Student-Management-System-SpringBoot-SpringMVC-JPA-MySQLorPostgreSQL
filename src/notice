@@ -111,6 +111,18 @@ Hibernate:
 2024-01-03 19:42:42.084 ERROR 21520 --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.InvalidDataAccessResourceUsageException: could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet] with root cause
 
 org.postgresql.util.PSQLException: ERROR: could not determine data type of parameter $1
+
+
+solution ---
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.TypedQuery;
+
+in JPA are used to create type-safe queries // Copilot says that - TOCHECK
+// but it works anyway
+
+
+cont'd logs $1---
 	at org.postgresql.core.v3.QueryExecutorImpl.receiveErrorResponse(QueryExecutorImpl.java:2675) ~[postgresql-42.3.8.jar:42.3.8]
 	at org.postgresql.core.v3.QueryExecutorImpl.processResults(QueryExecutorImpl.java:2365) ~[postgresql-42.3.8.jar:42.3.8]
 	at org.postgresql.core.v3.QueryExecutorImpl.execute(QueryExecutorImpl.java:355) ~[postgresql-42.3.8.jar:42.3.8]
@@ -215,7 +227,7 @@ org.postgresql.util.PSQLException: ERROR: could not determine data type of param
 
 
 
-full logs ---
+full logs $7 ---
 
 Hibernate: 
     /* select
