@@ -74,6 +74,12 @@ public class EmpServiceImpl implements EmpService {
 
         List<Emp> rows = empRepository.queryByLots(pageable, name, gender, begin, end);
 
+
+//        rows = empRepository.findByName(name);
+//        rows = empRepository.findEmps11ByGender(gender);
+//        rows = empRepository.findByGender(gender);
+//        rows = empRepository.findById(id); // the last method exists before declaring in repository interface
+
         Long total = (long) rows.size();
 //        Long total = empRepository.count();
 

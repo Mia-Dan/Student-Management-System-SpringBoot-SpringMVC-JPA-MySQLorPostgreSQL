@@ -37,4 +37,5 @@ import java.util.List;
 
 public interface EmpRepository extends PagingAndSortingRepository<Emp, Integer>, JpaSpecificationExecutor<Emp>, CustomEmpRepository {
     // other methods...
+//    List<Emp> findEmps11ByGender(Short gender);
 }

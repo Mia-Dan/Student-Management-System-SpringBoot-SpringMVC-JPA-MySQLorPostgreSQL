@@ -39,8 +39,8 @@ public class CustomEmpRepositoryImpl implements CustomEmpRepository {
         }
 
         cq.where(predicates.toArray(new Predicate[0]));
-
         TypedQuery<Emp> query = entityManager.createQuery(cq);
+
         query.setFirstResult((int) pageable.getOffset());
         query.setMaxResults(pageable.getPageSize());
 
