@@ -92,4 +92,9 @@ public class EmpServiceImpl implements EmpService {
         emp.setUpdateTime(LocalDateTime.now());
         empRepository.save(emp);
     }
+
+    @Override
+    public Emp login(Emp emp) {
+        return empRepository.findByUsernameAndPassword(emp.getUsername(), emp.getPassword());
+    }
 }

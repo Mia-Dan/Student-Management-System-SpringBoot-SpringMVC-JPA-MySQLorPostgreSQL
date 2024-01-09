@@ -42,6 +42,9 @@ List<Emp> queryByLots(Pageable pageable,
 public interface EmpRepository extends PagingAndSortingRepository<Emp, Integer>, JpaSpecificationExecutor<Emp>, CustomEmpRepository {
     // other methods...
 //    List<Emp> findEmps11ByGender(Short gender);
+
+    Emp findByUsernameAndPassword(String username, String password);
+
 }
 
 /* sample dynamic query drawn from other projects */
