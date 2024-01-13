@@ -10,27 +10,30 @@ import org.springframework.stereotype.Component;
 @Aspect
 public class DemoAspect {
 
-    @Before("execution(* com.example.service.*.*(..))")
+    @Pointcut("execution(* com.example.service.*.*(..))") // 抽取切入点表达式，方便复用
+    public void pointcut() {}
+
+    @Before("pointcut()")
     public void before() {
         log.info("AOP DemoAspect: before - invoked");
     }
 
-    @After("execution(* com.example.service.*.*(..))")
+    @After("pointcut()")
     public void after() {
-        log.info("AOP DemoAspect: after - invoked"); // act similar to finally
+        log.info("AOP DemoAspect: after - invoked"); // act similar to finally。 相当于AfterThrowing + AfterReturning
     }
 
-    @AfterReturning("execution(* com.example.service.*.*(..))")
+    @AfterReturning("pointcut()")
     public void afterReturning() {
         log.info("AOP DemoAspect: afterReturning - invoked");
     }
 
-    @AfterThrowing("execution(* com.example.service.*.*(..))")
+    @AfterThrowing("pointcut()")
     public void afterThrowing() {
         log.info("AOP DemoAspect: afterThrowing - invoked");
     }
 
-    @Around("execution(* com.example.service.*.*(..))")
+    @Around("pointcut()")
     public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
         log.info("AOP DemoAspect: around - before - invoked");
 
