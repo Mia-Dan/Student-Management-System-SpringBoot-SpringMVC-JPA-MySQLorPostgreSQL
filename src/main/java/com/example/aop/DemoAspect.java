@@ -6,6 +6,20 @@ import org.aspectj.lang.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+/*
+    5 places for binding advice to join point:
+        before
+        after =
+                + afterReturning
+                + afterThrowing
+        around
+
+    pointcut: 2 ways - example
+        execution(* com.example.service.*.*(..))
+        @annotation(com.example.aop.MyLogAnnotation)
+
+    @Order() of several aspects
+ */
 @Slf4j
 @Component
 @Aspect
