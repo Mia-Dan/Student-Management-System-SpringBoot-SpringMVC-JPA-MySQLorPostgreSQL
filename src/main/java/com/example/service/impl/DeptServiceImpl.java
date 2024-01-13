@@ -1,6 +1,6 @@
 package com.example.service.impl;
 
-import com.example.aop.MyLogAnnotation;
+//import com.example.aop.MyLogAnnotation;
 import com.example.mapper.DeptMapper;
 import com.example.pojo.Dept;
 import com.example.repository.DeptRepository;
@@ -56,7 +56,7 @@ public class DeptServiceImpl implements DeptService {
     DeptRepository deptRepository;
 
     @Override
-    @MyLogAnnotation
+//    @MyLogAnnotation
     public List<Dept> listAll() {
         List<Dept> depts = (List<Dept>) deptRepository.findAll();
         return depts;
@@ -77,7 +77,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    @MyLogAnnotation
+//    @MyLogAnnotation
     public Dept getById(Integer id) {
 //        return deptRepository.findById(id);
         return deptRepository.findById(id).get();

@@ -8,9 +8,9 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Slf4j
-@Component
-@Aspect
-@Order(10)
+//@Component
+//@Aspect
+//@Order(10)
 public class TimerAspect {
 
     @Around("execution(* com.example.service.*.*(..))") // 切入点表达式。service包下所有类/接口的所有[方法]

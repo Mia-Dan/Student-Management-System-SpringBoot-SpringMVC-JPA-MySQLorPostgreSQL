@@ -17,6 +17,8 @@ import java.util.Arrays;
 
     proceedingJoinPoint extends joinPoint
  */
+
+/*
 @Slf4j
 @Component
 @Aspect
@@ -94,3 +96,4 @@ public class Demo2Aspect {
         return result;
     }
 }
+*/
