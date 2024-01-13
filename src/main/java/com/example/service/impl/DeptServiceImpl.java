@@ -1,6 +1,7 @@
 package com.example.service.impl;
 
 //import com.example.aop.MyLogAnnotation;
+import com.example.aop.LogAnnotation;
 import com.example.mapper.DeptMapper;
 import com.example.pojo.Dept;
 import com.example.repository.DeptRepository;
@@ -63,11 +64,13 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
+    @LogAnnotation
     public void deleteById(Integer id) {
         deptRepository.deleteById(id);
     }
 
     @Override
+    @LogAnnotation
     public void add(Dept dept) {
         // 补全属性
         dept.setCreateTime(LocalDateTime.now());
@@ -84,6 +87,7 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
+    @LogAnnotation
     public void update(Dept dept) {
         // 补全属性
         dept.setUpdateTime(LocalDateTime.now());
