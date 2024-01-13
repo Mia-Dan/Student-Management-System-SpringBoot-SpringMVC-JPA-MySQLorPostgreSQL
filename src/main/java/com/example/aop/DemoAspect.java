@@ -3,11 +3,13 @@ package com.example.aop;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 @Aspect
+@Order(1)
 public class DemoAspect {
 
     @Pointcut("execution(* com.example.service.*.*(..))") // 抽取切入点表达式，方便复用
