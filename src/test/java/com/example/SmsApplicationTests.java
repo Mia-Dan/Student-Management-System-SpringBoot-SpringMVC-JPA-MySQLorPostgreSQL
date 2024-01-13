@@ -1,24 +1,30 @@
 package com.example;
 
+import com.example.pojo.Dept;
+import com.example.service.DeptService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-//@SpringBootTest
+@SpringBootTest
 class SmsApplicationTests {
 
-    @Test
+    @Autowired
+    DeptService deptService;
+
+    //@Test
     void contextLoads() {
     }
 
-    @Test
+    //@Test
     void jwtGenerate(){
         Map<String, Object> claims = new HashMap<>();
         claims.put("username", "admin");
@@ -36,7 +42,7 @@ class SmsApplicationTests {
         // eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNzA1MTIzNzk2LCJ1c2VybmFtZSI6ImFkbWluIn0.eHoBGOH01dfyaehDS9R8W_0MmEhRiaVPNuvxtK1ZJ5U
     }
 
-    @Test
+    //@Test
     void jwtValidate(){
         Claims claims = Jwts.parser()
                 .setSigningKey("some_secrte_string")
@@ -50,4 +56,24 @@ class SmsApplicationTests {
         System.out.println(claims);
 
     }
+
+
+    @Test
+    void testAopDeptList(){
+        deptService.listAll(); // 会触发aop DemoAspect
+    }
+
+    @Test
+    void testAopDeptGetById(){
+        deptService.getById(1); // 会触发aop DemoAspect
+    }
+
+    @Test
+    void testAopDeptAdd(){
+        Dept dept = new Dept();
+        dept.setName("test");
+        deptService.add(new Dept()); // 【不】会触发aop DemoAspect
+    }
+
+
 }

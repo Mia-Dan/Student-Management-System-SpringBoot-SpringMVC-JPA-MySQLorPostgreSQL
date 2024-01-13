@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 public class TimerAspect {
 
     @Around("execution(* com.example.service.*.*(..))") // 切入点表达式。service包下所有类/接口的所有[方法]
+//    @Around("@annotation(com.example.aop.MyLogAnnotation)")
     public Object recordTime(ProceedingJoinPoint joinPoint) throws Throwable { // 抛出的异常来自原始方法
         long start = System.currentTimeMillis();
         log.info("AOP TimerAspect: timer started: "+ start);

@@ -12,7 +12,9 @@ import org.springframework.stereotype.Component;
 @Order(1)
 public class DemoAspect {
 
-    @Pointcut("execution(* com.example.service.*.*(..))") // 抽取切入点表达式，方便复用
+    // 抽取切入点表达式，方便复用
+//    @Pointcut("execution(* com.example.service.*.*(..))")
+    @Pointcut("@annotation(com.example.aop.MyLogAnnotation)")
     public void pointcut() {}
 
     @Before("pointcut()")
