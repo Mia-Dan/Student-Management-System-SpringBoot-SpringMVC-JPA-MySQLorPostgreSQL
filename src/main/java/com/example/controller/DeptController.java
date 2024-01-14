@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.aop.LogAnnotation;
 import com.example.pojo.Dept;
 import com.example.pojo.EmpPageBean;
 import com.example.pojo.Result;
@@ -34,6 +35,7 @@ public class DeptController {
         return Result.success(dept);
     }
 
+    @LogAnnotation
     @DeleteMapping("/depts/{id}") // 大括号内为路径变量
     public Result deleteById(@PathVariable("id") Integer id) { //路径变量用@PathVariable注解
         deptService.deleteById(id);
@@ -41,6 +43,7 @@ public class DeptController {
         return Result.success();
     }
 
+    @LogAnnotation
     @PostMapping("/depts")
     public Result add(@RequestBody Dept dept) { //请求体用@RequestBody注解, 这里用实体类Dept接收json数据(请求体)
         deptService.add(dept);
@@ -48,7 +51,7 @@ public class DeptController {
         return Result.success();
     }
 
-
+    @LogAnnotation
     @PutMapping("/depts")
     public Result update(@RequestBody Dept dept) { //请求体用@RequestBody注解, 这里用实体类Dept接收json数据(请求体)
         deptService.update(dept);

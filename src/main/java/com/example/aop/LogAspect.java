@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 @Slf4j
 @Component
@@ -37,7 +38,7 @@ public class LogAspect {
 
     @Around("pointcut()")
     public Object log(ProceedingJoinPoint joinPoint) throws Throwable {
-        log.info("AOP LogAspect: around - before - invoked");
+        log.info("AOP LogAspect: around - before - invoke");
 
         long start = System.currentTimeMillis();
 
@@ -46,15 +47,26 @@ public class LogAspect {
         long end = System.currentTimeMillis();
 
         OperateLog operateLog = new OperateLog();
-        operateLog.setClassName(joinPoint.getTarget().getClass().getName());
-        operateLog.setMethodName(joinPoint.getSignature().getName());
-        operateLog.setMethodParams(joinPoint.getArgs().toString());
-//        operateLog.setReturnValue(result.toString()); // null pointer exception
-        operateLog.setReturnValue(JSONObject.toJSONString(result));
-        operateLog.setOperateUser((Integer) jwtUtils.jwtValidate(request.getHeader("token")).get("id"));
+
         operateLog.setOperateTime(LocalDateTime.now());
+
+        operateLog.setClassName(joinPoint.getTarget().getClass().getName());
+
+        operateLog.setMethodName(joinPoint.getSignature().getName());
+
+//        operateLog.setMethodParams(joinPoint.getArgs().toString()); // [Ljava.lang.Object;@30b9dac7
+//        operateLog.setMethodParams(Arrays.toString(joinPoint.getArgs())); // [Dept(id=13, name=教研1111部, createTime=2024-01-14T09:36:08.227, updateTime=2024-01-14T09:36:08.227)]
+        operateLog.setMethodParams(Arrays.deepToString(joinPoint.getArgs())); // [Dept(id=13, name=教研1111部, createTime=2024-01-14T09:36:08.227, updateTime=2024-01-14T09:36:08.227)]
+
+//        operateLog.setReturnValue(result.toString()); // null pointer exception
+        // and I need to return a json, not a plain string
+        operateLog.setReturnValue(JSONObject.toJSONString(result));
+
+        operateLog.setOperateUser((Integer) jwtUtils.jwtValidate(request.getHeader("token")).get("id"));
+
         operateLog.setCostTime(end - start);
 
+        log.info("AOP LogAspect: save log: " + operateLog);
         operateLogRepository.save(operateLog);
 
         return result;

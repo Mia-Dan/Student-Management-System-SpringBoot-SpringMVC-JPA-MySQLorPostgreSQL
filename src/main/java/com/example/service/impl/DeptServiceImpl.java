@@ -64,13 +64,11 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    @LogAnnotation
     public void deleteById(Integer id) {
         deptRepository.deleteById(id);
     }
 
     @Override
-    @LogAnnotation
     public void add(Dept dept) {
         // 补全属性
         dept.setCreateTime(LocalDateTime.now());
@@ -87,7 +85,6 @@ public class DeptServiceImpl implements DeptService {
     }
 
     @Override
-    @LogAnnotation
     public void update(Dept dept) {
         // 补全属性
         dept.setUpdateTime(LocalDateTime.now());

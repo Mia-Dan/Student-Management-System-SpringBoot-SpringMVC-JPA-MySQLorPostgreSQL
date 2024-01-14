@@ -1,6 +1,7 @@
 package com.example.controller;
 
 
+import com.example.aop.LogAnnotation;
 import com.example.pojo.Emp;
 import com.example.pojo.EmpPageBean;
 import com.example.pojo.Result;
@@ -37,6 +38,7 @@ public class EmpController {
         return Result.success(empPageBean);
     }
 
+    @LogAnnotation
     @PostMapping("/emps")
     public Result save(@RequestBody Emp emp){
         empService.save(emp);
