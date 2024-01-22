@@ -1,11 +1,15 @@
+#
 server:
     port: 8080
+#
 spring:
+    # MySQL
     datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
         password: 123456
         url: jdbc:mysql://localhost:3306/tmp?useSSL=false
         username: root
+    # JPA, Hibernate
     jpa:
         hibernate:
             ddl-auto: update
@@ -15,6 +19,13 @@ spring:
                 format_sql: true
                 use_sql_comments: true
         show-sql: true
+    servlet:
+        # MultipartFile upload configuration
+        multipart:
+            # single file max size
+            max-file-size: 50MB
+            # single request ... (一次请求可以上传多个文件)
+            max-request-size: 200MB
 alibaba:
     cloud:
         access-key: LTAI5t68NnuV4S3ypSKpxNeY
@@ -22,6 +33,7 @@ alibaba:
         oss:
             endpoint: oss-cn-hangzhou.aliyuncs.com
         secret-key: Tvbhb3DhvEdnSSw8QRuvzdHJQ57BOM
+# Mybatis
 mybatis:
     configuration:
         log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
