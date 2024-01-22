@@ -22,7 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        log.info("Interceptor: preHandle invoked");
+        log.debug("Interceptor: preHandle invoked");
 
         // get jwt from header - token
         String jwt = request.getHeader("token");
@@ -56,11 +56,11 @@ public class LoginInterceptor implements HandlerInterceptor {
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-        log.info("Interceptor: postHandle invoked");
+        log.debug("Interceptor: postHandle invoked");
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-        log.info("Interceptor: afterCompletion invoked");
+        log.debug("Interceptor: afterCompletion invoked");
     }
 }
