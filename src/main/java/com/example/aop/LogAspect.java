@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
@@ -62,7 +61,9 @@ public class LogAspect {
         // and I need to return a json, not a plain string
         operateLog.setReturnValue(JSONObject.toJSONString(result));
 
-        operateLog.setOperateUser((Integer) jwtUtils.jwtValidate(request.getHeader("token")).get("id"));
+        // WARNING: will throw exception if request doesn't carry JWT token
+        // however, in this project interceptor will make sure every request that reaches here have JWT token with it
+        operateLog.setOperateUser((Integer) jwtUtils.jwtParse(request.getHeader("token")).get("id"));
 
         operateLog.setCostTime(end - start);
 

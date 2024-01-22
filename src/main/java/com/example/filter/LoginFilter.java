@@ -7,7 +7,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.StringUtils;
 
 import javax.servlet.*;
-import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -41,7 +40,7 @@ public class LoginFilter implements Filter {
 
         // if jwt is invalid or expired
         try{
-            JwtUtils.jwtValidate(jwt);
+            JwtUtils.jwtParse(jwt);
         } catch (Exception e){
             log.info("LoginFilter: jwt is invalid or expired");
             responseErrorMsg(response);

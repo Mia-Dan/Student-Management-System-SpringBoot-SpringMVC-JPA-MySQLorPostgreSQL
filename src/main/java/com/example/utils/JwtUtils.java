@@ -6,7 +6,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
 
 @Component
@@ -27,10 +26,10 @@ public class JwtUtils {
         // e.g., eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNzA1MTIzNzk2LCJ1c2VybmFtZSI6ImFkbWluIn0.eHoBGOH01dfyaehDS9R8W_0MmEhRiaVPNuvxtK1ZJ5U
     }
 
-    public static Claims jwtValidate(String jwt){
+    public static Claims jwtParse(String jwt){
         Claims claims = Jwts.parser()
                 .setSigningKey(signKey)
-                .parseClaimsJws(jwt)
+                .parseClaimsJws(jwt) // will throw exception if null
                 .getBody();
 
         // will throw exception if expired or invalid

@@ -36,7 +36,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 
         // if jwt is invalid or expired
         try{
-            JwtUtils.jwtValidate(jwt);
+            JwtUtils.jwtParse(jwt);
         } catch (Exception e){
             log.info("Interceptor: jwt is invalid or expired");
             responseErrorMsg(response);
