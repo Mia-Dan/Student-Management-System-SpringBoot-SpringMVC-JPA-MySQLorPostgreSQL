@@ -15,4 +15,10 @@ public interface EmpService {
     Emp login(Emp emp); // 0 or 1 emp return is possible (since username is unique)
 
     void save(Emp emp);
+
+    void deleteByIds(List<Integer> ids);
+
+    Emp getById(Integer id);
+
+    void update(Emp emp);
 }

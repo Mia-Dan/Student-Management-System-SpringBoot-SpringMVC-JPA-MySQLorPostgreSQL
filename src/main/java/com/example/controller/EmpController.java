@@ -12,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Slf4j
@@ -36,6 +37,29 @@ public class EmpController {
 //        EmpPageBean empPageBean = empService.page(page, pageSize);
         log.info("Emp listPage() invoked, page = " + page + ", pageSize = " + pageSize + ", name = " + name + ", gender = " + gender + ", begin = " + begin + ", end = " + end);
         return Result.success(empPageBean);
+    }
+
+    @GetMapping("/emps/{id}")
+    public Result getById(@PathVariable("id") Integer id) {
+        Emp emp = empService.getById(id);
+        log.info("Emp getById() invoked, id = " + id);
+        return Result.success(emp);
+    }
+
+    @LogAnnotation
+    @DeleteMapping("/emps/{ids}")
+    public Result deleteByIds(@PathVariable("ids") List<Integer> ids) {
+        empService.deleteByIds(ids);
+        log.info("Emp deleteByIds() invoked, ids = " + ids);
+        return Result.success();
+    }
+
+    @LogAnnotation
+    @PutMapping("/emps")
+    public Result update(@RequestBody Emp emp){
+        empService.update(emp);
+        log.info("Emp update() invoked, emp = " + emp);
+        return Result.success();
     }
 
     @LogAnnotation

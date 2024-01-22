@@ -94,6 +94,22 @@ public class EmpServiceImpl implements EmpService {
     }
 
     @Override
+    public void deleteByIds(List<Integer> ids) {
+        empRepository.deleteAllById(ids);
+    }
+
+    @Override
+    public Emp getById(Integer id) {
+        return empRepository.findById(id).get();
+    }
+
+    @Override
+    public void update(Emp emp) {
+        emp.setUpdateTime(LocalDateTime.now());
+        empRepository.save(emp);
+    }
+
+    @Override
     public Emp login(Emp emp) {
         return empRepository.findByUsernameAndPassword(emp.getUsername(), emp.getPassword());
     }
