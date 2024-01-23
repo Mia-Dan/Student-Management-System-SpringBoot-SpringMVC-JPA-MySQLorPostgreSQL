@@ -72,7 +72,7 @@ public class EmpServiceImpl implements EmpService {
         Pageable pageable = org.springframework.data.domain.PageRequest.of(page - 1, pageSize);
 //        List<Emp> rows = empRepository.findAll(pageable).getContent();
 
-        List<Emp> rows = empRepository.queryByLots(pageable, name, gender, begin, end);
+        EmpPageBean empPageBean = empRepository.queryByLots(pageable, name, gender, begin, end);
 
 
 //        rows = empRepository.findByName(name);
@@ -80,10 +80,7 @@ public class EmpServiceImpl implements EmpService {
 //        rows = empRepository.findByGender(gender);
 //        rows = empRepository.findById(id); // the last method exists before declaring in repository interface
 
-        Long total = (long) rows.size();
-//        Long total = empRepository.count();
-
-        return new EmpPageBean(total, rows);
+        return empPageBean;
     }
 
     @Override
