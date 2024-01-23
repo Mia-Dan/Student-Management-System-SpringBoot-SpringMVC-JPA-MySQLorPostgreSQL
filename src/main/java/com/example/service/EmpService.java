@@ -10,7 +10,6 @@ public interface EmpService {
 
     EmpPageBean page(Integer page, Integer pageSize,
                      String name, Short gender, LocalDate begin, LocalDate end);
-//    EmpPageBean page(Integer page, Integer pageSize);
 
     Emp login(Emp emp); // 0 or 1 emp return is possible (since username is unique)
 

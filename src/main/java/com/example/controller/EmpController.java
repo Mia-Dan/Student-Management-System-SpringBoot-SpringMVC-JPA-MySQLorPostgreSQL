@@ -22,10 +22,8 @@ public class EmpController {
     @Autowired
     private EmpService empService;
 
-    // // 请求样例: /emps?name=张&gender=1&begin=2007-09-01&end=2022-09-01&page=1&pageSize=10
-    // 请求样例: /emps?page=1&pageSize=10
+    // 请求样例: /emps?name=张&gender=1&begin=2007-09-01&end=2022-09-01&page=1&pageSize=10
     @GetMapping("/emps")
-//    public EmpPageBean listPage(int page, int pageSize){ // page和pageSize是请求参数,NOTICE: 命名需要与前端传来的完全一致
     public Result listPage(@RequestParam(defaultValue = "1") Integer page,
                            @RequestParam(defaultValue = "10") Integer pageSize,
                            String name, Short gender,
@@ -34,7 +32,6 @@ public class EmpController {
                            @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end
                            ){
         EmpPageBean empPageBean = empService.page(page, pageSize, name, gender, begin, end);
-//        EmpPageBean empPageBean = empService.page(page, pageSize);
         log.info("Emp listPage() invoked, page = " + page + ", pageSize = " + pageSize + ", name = " + name + ", gender = " + gender + ", begin = " + begin + ", end = " + end);
         return Result.success(empPageBean);
     }

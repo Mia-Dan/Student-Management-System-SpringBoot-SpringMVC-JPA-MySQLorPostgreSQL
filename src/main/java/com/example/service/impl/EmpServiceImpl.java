@@ -19,20 +19,10 @@ import java.util.List;
 public class EmpServiceImpl implements EmpService {
 
 
-    // MyBatis -------------------------------------------------------
+// MyBatis -------------------------------------------------------
 //    @Autowired
 //    private EmpMapper empMapper;
 
-////    @Override
-////    public EmpPageBean page(Integer page, Integer pageSize) {
-////        Integer start = (page - 1) * pageSize;
-////        List<Emp> rows = empMapper.listPage(start, pageSize);
-////
-////        Long total = empMapper.getTotalRows();
-////
-////        return new EmpPageBean(total, rows);
-////    }
-//
 //    @Override
 //    public EmpPageBean page(Integer page, Integer pageSize,
 //                            String name, Short gender, LocalDate begin, LocalDate end
@@ -42,44 +32,18 @@ public class EmpServiceImpl implements EmpService {
 //        Page<Emp> p = (Page<Emp>) rows;
 //        return new EmpPageBean(p.getTotal(), p.getResult());
 //    }
-//
-//    @Override
-//    public void save(Emp emp) {
-//        emp.setCreateTime(LocalDateTime.now());
-//        emp.setUpdateTime(LocalDateTime.now());
-//        empMapper.save(emp);
-//    }
 
-    // JPA -------------------------------------------------------
+
+// JPA -------------------------------------------------------
     @Autowired
     private EmpRepository empRepository;
-
-//    @Override
-//    public EmpPageBean page(Integer page, Integer pageSize
-////                            String name, Short gender, LocalDate begin, LocalDate end
-//                            ) { // Pagination
-//        Pageable pageable = org.springframework.data.domain.PageRequest.of(page - 1, pageSize);
-//        List<Emp> rows = empRepository.findAll(pageable).getContent();
-//        Long total = empRepository.count();
-//
-//        return new EmpPageBean(total, rows);
-//    }
 
     @Override
     public EmpPageBean page(Integer page, Integer pageSize
                             , String name, Short gender, LocalDate begin, LocalDate end
-    ) {
+                           ) {
         Pageable pageable = org.springframework.data.domain.PageRequest.of(page - 1, pageSize);
-//        List<Emp> rows = empRepository.findAll(pageable).getContent();
-
         EmpPageBean empPageBean = empRepository.queryByLots(pageable, name, gender, begin, end);
-
-
-//        rows = empRepository.findByName(name);
-//        rows = empRepository.findEmps11ByGender(gender);
-//        rows = empRepository.findByGender(gender);
-//        rows = empRepository.findById(id); // the last method exists before declaring in repository interface
-
         return empPageBean;
     }
 
@@ -110,4 +74,13 @@ public class EmpServiceImpl implements EmpService {
     public Emp login(Emp emp) {
         return empRepository.findByUsernameAndPassword(emp.getUsername(), emp.getPassword());
     }
+
+//    public List<Emp> demoOfJpaRepository(){
+//        rows = empRepository.findByName(name);
+//        rows = empRepository.findEmps11ByGender(gender);
+//        rows = empRepository.findByGender(gender);
+//        rows = empRepository.findById(id); // the last method exists before declaring in repository interface
+//        return rows;
+//    }
+
 }

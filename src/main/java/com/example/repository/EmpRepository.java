@@ -1,5 +1,6 @@
 package com.example.repository;
 
+
 import com.example.pojo.Emp;
 import org.hibernate.annotations.Parameter;
 import org.springframework.data.domain.PageRequest;
@@ -16,6 +17,12 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 import java.time.LocalDate;
 import java.util.*;
+
+public interface EmpRepository extends PagingAndSortingRepository<Emp, Integer>, JpaSpecificationExecutor<Emp>, CustomEmpRepository {
+    Emp findByUsernameAndPassword(String username, String password);
+//    List<Emp> findEmps11ByGender(Short gender);
+}
+
 
 /* conditional paged query
     that works for MySQL but not PostgreSQL, due to null handling differences for :begin and :end (type Java's LocalDate)*/
@@ -39,13 +46,6 @@ List<Emp> queryByLots(Pageable pageable,
 }
 */
 
-public interface EmpRepository extends PagingAndSortingRepository<Emp, Integer>, JpaSpecificationExecutor<Emp>, CustomEmpRepository {
-    // other methods...
-//    List<Emp> findEmps11ByGender(Short gender);
-
-    Emp findByUsernameAndPassword(String username, String password);
-
-}
 
 /* sample dynamic query drawn from other projects */
 /*
