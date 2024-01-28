@@ -1,4 +1,4 @@
-package org.example;
+package com.example;
 
 import com.example.pojo.Dept;
 import com.example.service.DeptService;

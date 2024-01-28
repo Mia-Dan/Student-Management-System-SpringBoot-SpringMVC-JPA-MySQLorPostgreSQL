@@ -7,7 +7,7 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.example</groupId>
+    <groupId>com.example</groupId>
     <artifactId>sms-pojo</artifactId>
     <packaging>jar</packaging>
 
