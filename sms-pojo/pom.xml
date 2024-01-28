@@ -5,9 +5,12 @@
         <groupId>com.example</groupId>
         <artifactId>sms</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+<!--        <relativePath>:  If not specified, it defaults to &lt;code&gt;../pom.xml&lt;/code&gt;. -->
+<!--        <relativePath>../pom.xml</relativePath>-->
     </parent>
 
-    <groupId>com.example</groupId>
+<!--    Definition of groupId is redundant, because it's inherited from the parent  -->
+<!--    <groupId>com.example</groupId>-->
     <artifactId>sms-pojo</artifactId>
     <packaging>jar</packaging>
 
