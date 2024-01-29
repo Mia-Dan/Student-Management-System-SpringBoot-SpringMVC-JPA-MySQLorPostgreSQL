@@ -41,7 +41,6 @@
 
         <mybatis-spring-boot-starter.version>2.3.0</mybatis-spring-boot-starter.version>
         <page-helper-spring-boot-starter.version>1.4.7</page-helper-spring-boot-starter.version>
-<!--        <mysql-connector-j.version>1.4.7</mysql-connector-j.version>-->
         <mysql-connector-j.version>8.0.33</mysql-connector-j.version>
 
         <jjwt.version>0.9.1</jjwt.version>
