@@ -20,17 +20,18 @@
 
     <dependencies>
 
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>sms-pojo</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--        由于父工程sms已经是聚合工程（声明了<modules>）, 子工程无需再相互引用-->
+<!--        <dependency>-->
+<!--            <groupId>com.example</groupId>-->
+<!--            <artifactId>sms-pojo</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
-        <dependency>
-            <groupId>com.example</groupId>
-            <artifactId>sms-utils</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.example</groupId>-->
+<!--            <artifactId>sms-utils</artifactId>-->
+<!--            <version>0.0.1-SNAPSHOT</version>-->
+<!--        </dependency>-->
 
 
         <!-- Spring AOP 依赖 -->

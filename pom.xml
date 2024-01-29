@@ -3,9 +3,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- Maven父工程 (sms) 的 pom.xml -->
-    <!-- 父工程不包含任何代码 -->
-    <!-- 父工程需指定打包方式为pom. 因为Maven默认以jar打包 -->
+<!--     Maven父工程 (sms) 的 pom.xml -->
+<!--     父工程不包含任何代码 -->
+<!--     父工程需指定打包方式为pom. 因为Maven默认以jar打包 -->
     <parent>
         <artifactId>spring-boot-starter-parent</artifactId>
         <groupId>org.springframework.boot</groupId>
@@ -15,12 +15,14 @@
     <groupId>com.example</groupId>
     <artifactId>sms</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <!-- pom用于：父工程或聚合工程，该模块不写代码，仅进行依赖管理  -->
+<!--     pom用于：父工程或聚合工程，该模块不写代码，仅进行依赖管理  -->
     <packaging>pom</packaging>
 
     <name>sms</name>
     <description>sms</description>
 
+<!--    声明<modules>，表明是 聚合工程 -->
+<!--    聚合其他模块:  -->
     <modules>
         <module>sms-pojo</module>
         <module>sms-utils</module>
